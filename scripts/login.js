@@ -1,3 +1,4 @@
+
 document.querySelector("#authClick").addEventListener("click",()=>{
     document.querySelector("#emailField").classList.remove("is-invalid");
     document.querySelector("#passwordField").classList.remove("is-invalid");
@@ -11,7 +12,7 @@ document.querySelector("#authClick").addEventListener("click",()=>{
             "password":document.querySelector("#passwordField").value
         }),
         success: function(data){
-            console.log(data)
+            localStorage.setItem("token",data.token)
         },
         error: function(error){
             const errors = error.responseJSON.errors;
