@@ -42,7 +42,7 @@ document.querySelector("#authClick").addEventListener("click",()=>{
         }
         if(!password_pattern.test(document.querySelector("#passwordField").value)){
             document.querySelector("#passwordField").classList.add("is-invalid");
-            document.querySelector("#passwordField").parentElement.querySelector(".invalid-feedback").textContent = "Поле должно соответствовать образцу(быть не меньше 6 символов)";
+            document.querySelector("#passwordField").parentElement.querySelector(".invalid-feedback").textContent = "Некорректный пароль";
         }
     }
 });
