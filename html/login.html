@@ -4,9 +4,15 @@
             Вход
         </div>
         <label for = "emailField">Email</label>
-        <input class = "form-control" type="email" id = "emailField" placeholder="youremail@gmail.com">
+        <div class = "input-group">
+            <input class = "form-control" type="email" id = "emailField" placeholder="youremail@gmail.com">
+            <div class="invalid-feedback"></div>
+        </div>
         <label for ="passwordField" class = "mt-2">Password</label>
-        <input class = "form-control" type="password" id ="passwordField" placeholder="password">
+        <div class = "input-group">
+            <input class = "form-control" type="password" id ="passwordField" placeholder="password">
+            <div class="invalid-feedback"></div>
+        </div>
         <button class = "btn btn-primary w-100 mt-2" id = "authClick" type  ="button">Войти</button>
         <a class = "btn btn-secondary w-100 mt-2" href = "/register">Регистрания</a>
     </form>

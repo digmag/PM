@@ -1,4 +1,6 @@
 document.querySelector("#authClick").addEventListener("click",()=>{
+    document.querySelector("#emailField").classList.remove("is-invalid");
+    document.querySelector("#passwordField").classList.remove("is-invalid");
     $.ajax({
         url: `https://mis-api.kreosoft.space/api/doctor/login`,
         contentType: "application/json",
@@ -13,9 +15,16 @@ document.querySelector("#authClick").addEventListener("click",()=>{
         },
         error: function(error){
             const errors = error.responseJSON.errors;
-            document.querySelector("#emailField").value = "";
+            console.log(error);
             console.log(errors);
-            document.querySelector("#emailField").placeholder = errors.Email[1];
+            if(errors.Email){
+                document.querySelector("#emailField").classList.add("is-invalid");
+                document.querySelector("#emailField").parentElement.querySelector(".invalid-feedback").textContent = errors.Email[0];
+            }
+            if(errors.Password){
+                document.querySelector("#passwordField").classList.add("is-invalid");
+                document.querySelector("#passwordField").parentElement.querySelector(".invalid-feedback").textContent = errors.Password[0];
+            }
         }
     });
 });
