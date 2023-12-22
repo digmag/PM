@@ -15,15 +15,18 @@ document.querySelector("#authClick").addEventListener("click",()=>{
         },
         error: function(error){
             const errors = error.responseJSON.errors;
-            console.log(error);
-            console.log(errors);
-            if(errors.Email){
-                document.querySelector("#emailField").classList.add("is-invalid");
-                document.querySelector("#emailField").parentElement.querySelector(".invalid-feedback").textContent = errors.Email[0];
+            if(!error.responseJSON.message){
+                if(errors.Email){
+                    document.querySelector("#emailField").classList.add("is-invalid");
+                    document.querySelector("#emailField").parentElement.querySelector(".invalid-feedback").textContent = errors.Email[0];
+                }
+                if(errors.Password){
+                    document.querySelector("#passwordField").classList.add("is-invalid");
+                    document.querySelector("#passwordField").parentElement.querySelector(".invalid-feedback").textContent = errors.Password[0];
+                }
             }
-            if(errors.Password){
-                document.querySelector("#passwordField").classList.add("is-invalid");
-                document.querySelector("#passwordField").parentElement.querySelector(".invalid-feedback").textContent = errors.Password[0];
+            else{
+                alert("Аккаунта нет в системе");
             }
         }
     });
