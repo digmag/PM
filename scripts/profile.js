@@ -24,4 +24,5 @@ function putin(data){
     document.querySelector("#emailField").value = data.email;
     document.querySelector("#phoneField").value = data.phone;
     document.querySelector("#Date").value = date_to_normal(data.birthday);
+    document.querySelector("#Name").value = data.name;
 }
