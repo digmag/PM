@@ -66,14 +66,15 @@ document.querySelector("#Speciality").addEventListener("input", (e)=>{
         contentType:"application/json",
         success: function(data){
             putintodatalist(data)
-            
+        },
+        error: function(t){
+            console.log(t);
         }
     });
 });
 
 function putintodatalist(data){
     let datalist = document.querySelector("datalist");
-    datalist.innerHTML = "";
     data.specialties.forEach(spec => {
         console.log(spec);
         datalist.innerHTML +=`<option>${spec.name}</option>`;
