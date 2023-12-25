@@ -17,17 +17,21 @@ function returndef(id){
     document.querySelector(`#${id}`).parentElement.querySelector(".invalid-feedback").textContent = "";
 }
 
+function correctTime(date){
+    return `${date}T00:00:00.000Z`;
+}
+
 document.querySelector("#regClick").addEventListener("click",()=>{
     returndef("Name");
     returndef("passwordField");
     returndef("emailField");
-    returndef("Speciality")
+    returndef("Speciality");
     const name  = return_null(document.querySelector("#Name").value);
     const password = return_null(document.querySelector("#passwordField").value);
     const email =  return_null(document.querySelector("#emailField").value);
     const phone  = return_null(document.querySelector("#phoneField").value);
     const id = return_null(document.querySelector("#Speciality").getAttribute("sid"));
-    console.log(name, password, email, phone, id);
+    const date = return_null(document.querySelector("#Date").value);
     const email_pattern = RegExp("[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}");
     const password_pattern = RegExp("[a-zA-z0-9]{6,}");
     if(email_pattern.test(email) && password_pattern.test(password)&& id && name != ""){
@@ -39,6 +43,9 @@ document.querySelector("#regClick").addEventListener("click",()=>{
         data.gender = genderTransform(document.querySelector("#Gender").value);
         if(phone){
             data.phone = phone;
+        }
+        if(date){
+            data.birthday = date;
         }
         console.log(data);
         $.ajax({
