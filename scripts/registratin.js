@@ -7,12 +7,27 @@ function genderTransform(gender){
     }
 }
 
+function return_null(obj){
+    if(obj){ return obj; }
+    return null;
+}
+
+function returndef(id){
+    document.querySelector(`#${id}`).classList.remove("is-invalid");
+    document.querySelector(`#${id}`).parentElement.querySelector(".invalid-feedback").textContent = "";
+}
+
 document.querySelector("#regClick").addEventListener("click",()=>{
-    const name  = document.querySelector("#Name").value;
-    const password = document.querySelector("#password").value;
-    const email =  document.querySelector("#emailField").value;
-    const phone  =document.querySelector("#phoneField").value;
-    const id = document.querySelector("#Speciality").sid;
+    returndef("Name");
+    returndef("passwordField");
+    returndef("emailField");
+    returndef("Speciality")
+    const name  = return_null(document.querySelector("#Name").value);
+    const password = return_null(document.querySelector("#passwordField").value);
+    const email =  return_null(document.querySelector("#emailField").value);
+    const phone  = return_null(document.querySelector("#phoneField").value);
+    const id = return_null(document.querySelector("#Speciality").getAttribute("sid"));
+    console.log(name, password, email, phone, id);
     const email_pattern = RegExp("[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}");
     const password_pattern = RegExp("[a-zA-z0-9]{6,}");
     if(email_pattern.test(email) && password_pattern.test(password)&& id && name != ""){
@@ -20,11 +35,12 @@ document.querySelector("#regClick").addEventListener("click",()=>{
         data.name = name;
         data.password = password;
         data.email = email;
-        data.id = id;
+        data.speciality = id;
         data.gender = genderTransform(document.querySelector("#Gender").value);
         if(phone){
             data.phone = phone;
         }
+        console.log(data);
         $.ajax({
             method:"POST",
             url: `https://mis-api.kreosoft.space/api/doctor/register`,
@@ -32,23 +48,23 @@ document.querySelector("#regClick").addEventListener("click",()=>{
             dataType:"json",
             data:JSON.stringify(data),
             success: function(data){
-                console.log(data)
+                localStorage.setItem("token", data.token);
             },
             error: function(t){
-
+                alert(t)
             }
         });
     }
     else{
-        if(name != ""){
+        if(RegExp("[a-zA-Z]{1,1000}").test(name)){
             document.querySelector("#Name").classList.add("is-invalid");
             document.querySelector("#Name").parentElement.querySelector(".invalid-feedback").textContent = "Имя является обязательным пунктом";
         }
-        if(password !=""){
-            document.querySelector("#password").classList.add("is-invalid");
-            document.querySelector("#password").parentElement.querySelector(".invalid-feedback").textContent = "Пароль не соответствует требованиям(должен быть от 6 символов)";
+        if(!password_pattern.test(password)){
+            document.querySelector("#passwordField").classList.add("is-invalid");
+            document.querySelector("#passwordField").parentElement.querySelector(".invalid-feedback").textContent = "Пароль не соответствует требованиям(должен быть от 6 символов)";
         }
-        if(email !=""){
+        if(!email_pattern.test(email)){
             document.querySelector("#emailField").classList.add("is-invalid");
             document.querySelector("#emailField").parentElement.querySelector(".invalid-feedback").textContent = "Email не соответствует требованиям";
         }
