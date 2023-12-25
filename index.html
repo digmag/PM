@@ -10,7 +10,40 @@
             </div>
         </header>
         <main>
-
+            <div class = "container border shadow-sm p-2">
+                <div class = "h1">
+                    Профиль
+                </div>
+                <label for = "Name">Имя</label>
+                <div class = "input-group">
+                    <input class = "form-control" id = "Name" placeholder="Иванов Иван Иванович">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class = "row">
+                    <div class = "col">
+                        <label for ="Gender">Пол</label>
+                        <select class = "form-select" id = "Gender">
+                            <option>Мужской</option>
+                            <option>Женский</option>
+                        </select>
+                    </div>
+                    <div class = "col">
+                        <label for="Date">Дата рождения</label>
+                        <input class = "form-control" id = "Date" type = "date">
+                    </div>
+                </div>
+                <label for = "phoneField">Телефон</label>
+                <div class = "input-group">
+                    <input class = "form-control" type="tel" id = "phoneField" placeholder="+7 (999) 999-99-99">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <label for = "emailField">Email</label>
+                <div class = "input-group">
+                    <input class = "form-control" type="email" id = "emailField" placeholder="youremail@gmail.com">
+                    <div class="invalid-feedback"></div>
+                </div>
+            </div>
+            <script src = "../scripts/profile.js"></script>
         </main>
         <footer class = "footer mt-auto py-3 bg-light">
             <div class = "continer mx-2">
