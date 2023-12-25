@@ -60,6 +60,7 @@ document.querySelector("#regClick").addEventListener("click",()=>{
 });
 
 document.querySelector("#Speciality").addEventListener("input", (e)=>{
+    document.querySelector("datalist").innerHTML = "";
     $.ajax({
         method:"GET",
         url: `https://mis-api.kreosoft.space/api/dictionary/speciality?name=${e.target.value}`,
