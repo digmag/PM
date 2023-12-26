@@ -10,7 +10,9 @@ window.addEventListener("load", ()=>{
             putin(data)
         },
         error: function(t){
-            console.log(t)
+            if(t.status == 401){
+                alert("Зарегистрируйтесь");
+            }
         }
     })
 });
@@ -62,6 +64,9 @@ document.querySelector("#Save").addEventListener("click", ()=>{
         error: function(t){
             if (t.status == 200){
                 alert("Изменено");
+            }
+            else if(t.status == 401){
+                alert("Зарегистрируйтесь");
             }
         }
     })
