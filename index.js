@@ -19,6 +19,14 @@ switch (route) {
             `;
         });
         break;
+    case "/profile":
+        $.get("html/profile.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML+=`
+            <title>profile</title>
+            `;
+        })
+        break;
     default:
         break;
 }
