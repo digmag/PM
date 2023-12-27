@@ -144,5 +144,19 @@ document.querySelector("#AddDiagnoses").addEventListener("click", ()=>{
     clone.querySelector("#type").id = "";
     clone.querySelector("#desc").textContent = `Расшифровка: ${document.querySelector("#IllnessDescr").value}`;
     clone.querySelector("#desc").id = "";
-    document.querySelector("#Diagnoses").appendChild(clone)
-})
+    if(type != "" && document.querySelector("#IllnessDescr").value != ""){
+        document.querySelector("#Diagnoses").appendChild(clone);
+    }
+    else{
+        alert("Все поля в блоке диагноза должны быть заполнены");
+    }
+});
+
+document.querySelector("#final").addEventListener("change", (e)=>{
+    if(e.target.value == "Выздоровел"){
+        e.target.parentElement.parentElement.querySelectorAll("div")[1].classList.add("d-none");
+    }
+    else{
+        e.target.parentElement.parentElement.querySelectorAll("div")[1].classList.remove("d-none");
+    }
+});

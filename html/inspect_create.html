@@ -94,5 +94,34 @@
         </div>
         <button class = "btn btn-primary" id = "AddDiagnoses">Добавить диагноз</button>
     </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Рекомендации
+        </div>
+        <textarea class = "w-100" id = "Recomendations" style="min-height: 50px; max-height: 100px;"></textarea>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Заключение
+        </div>
+        <div class = "row mt-1">
+            <div class = "col-6">
+                <label class = "text-secondary" for = "final">Заключение</label>
+                <select class = "form-select" id = "final">
+                    <option>Болезнь</option>
+                    <option>Выздоровел</option>
+                    <option>Смерть</option>
+                </select>
+            </div>
+            <div class = "col-6">
+                <label class = "text-secondary" for = "finaldate">Дата заключения</label>
+                <input class = "form-control" id = "finaldate" type = "date">
+            </div>
+        </div>
+    </div>
+    <div class = "container">
+        <button class = "btn btn-primary" id = "CreateInspection">Создать осмотр</button>
+        <button class = "btn btn-secondary">Отмена</button>
+    </div>
 </div>
 <script src = "scripts/inspect_create.js"></script>
