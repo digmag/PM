@@ -50,7 +50,7 @@ document.querySelector("#NotFirstInspection").addEventListener("change", (e)=>{
                 console.log(data)
                 data.forEach(element => {
                     document.querySelector("#OtherInspections").innerHTML +=`
-                    <option>${date_time(element.date)} ${element.diagnosis.name} ${element.diagnosis.code}</option>
+                    <option value = ${element.id}>${date_time(element.date)} ${element.diagnosis.name} ${element.diagnosis.code}</option>
                     `;
                 });
             }
@@ -61,6 +61,8 @@ document.querySelector("#NotFirstInspection").addEventListener("change", (e)=>{
         document.querySelector("#OtherInspections").innerHTML = "";
     }
 });
+
+//document.querySelector()
 
 document.querySelector("#NeedConsultation").addEventListener("change", (e)=>{
     if(e.target.checked){
@@ -130,7 +132,7 @@ document.querySelector("#Illness").addEventListener("input", (e)=>{
 
 document.querySelector("#AddDiagnoses").addEventListener("click", ()=>{
     let clone = document.querySelector("#DiagnosesDiv").cloneNode(true);
-    clone.id = "";
+    clone.id = document.querySelector("#Illness").getAttribute("diagid");
     clone.classList.remove("d-none");
     clone.querySelector(".h3.container").textContent = document.querySelector("#Illness").value;
     let types = document.querySelector("#Types");
@@ -141,8 +143,10 @@ document.querySelector("#AddDiagnoses").addEventListener("click", ()=>{
         }
     });
     clone.querySelector("#type").textContent = `Тип в осмотре: ${type}`;
+    clone.setAttribute("type", type);
     clone.querySelector("#type").id = "";
     clone.querySelector("#desc").textContent = `Расшифровка: ${document.querySelector("#IllnessDescr").value}`;
+    clone.setAttribute("desc", document.querySelector("#IllnessDescr").value);
     clone.querySelector("#desc").id = "";
     if(type != "" && document.querySelector("#IllnessDescr").value != ""){
         document.querySelector("#Diagnoses").appendChild(clone);
@@ -159,4 +163,42 @@ document.querySelector("#final").addEventListener("change", (e)=>{
     else{
         e.target.parentElement.parentElement.querySelectorAll("div")[1].classList.remove("d-none");
     }
+});
+
+function converttype(type){
+    switch (type) {
+        case "Основной":
+            return "Main";
+        case "Сопутствующий":
+            return "Concomitant";
+        default:
+            return "Complication";
+    }
+}
+
+document.querySelector("#CreateInspection").addEventListener("click", ()=>{
+    let data = {};
+    data.date = `${document.querySelector("#Date").value}T00:00:00.000Z`;
+    if(document.querySelector("#NotFirstInspection").checked){
+        data.previousInspectionId = document.querySelector("#OtherInspections").options[document.querySelector("#OtherInspections").selectedIndex].id;
+    }
+    data.anamnesis = document.querySelector("#Anamnesis").value;
+    data.complaints = document.querySelector("#Complaint").value;
+    let diagnoses_arr = document.querySelector("#Diagnoses").children;
+    let datadiag = [];
+    let i=0
+    for(let div of diagnoses_arr){
+        if(!div.classList.contains("d-none")){
+            let obj = {
+                icdDiagnosisId: div.id,
+                description: div.getAttribute("desc"),
+                type: converttype(div.getAttribute("type")),
+            }
+            console.log(obj)
+            datadiag[i]=obj;
+            i+=1;
+        }
+    };
+    data.diagnoses = datadiag;
+    console.log(data)
 });
