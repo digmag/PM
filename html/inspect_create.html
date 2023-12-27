@@ -32,23 +32,31 @@
             Консультация
         </div>
         <div id = "Consultations">
-            <div class = "container bg-light p-2">
-                <div class = "row">
-                    <div class = "col">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="NeedConsultation">
-                            <label class="form-check-label" for="NeedConsultation">Требуется консультация</label>
-                        </div>
-                    </div>
-                    <div class = "col">
-                        <input class = "form-control" id = "Spetiality" placeholder = "Специальность консультанта">
-                    </div>
-                </div>
-                <label for ="Comment">Комментарий</label>
-                <textarea class = "form-control" id = "Comment" style="min-height: 50px; max-height: 100px;"></textarea>
+            <div class = "container d-none" id = "consultationDiv">
+                <div class = "h3 container">Консультация</div>
+                <div class = "container text-secondary" id ="spec">Специальность</div>
+                <div class = "container text-secondary" id="com">Комментарий</div>
             </div>
         </div>
-        <button class = "btn btn-primary" id = "AddConsultation">Добавить консультации</button>
+        <div class = "container bg-light p-2">
+            <div class = "row">
+                <div class = "col">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="NeedConsultation">
+                        <label class="form-check-label" for="NeedConsultation">Требуется консультация</label>
+                    </div>
+                </div>
+                <div class = "col">
+                    <input class = "form-control" id = "Spetiality" placeholder = "Специальность консультанта" readonly list = "dataspet">
+                    <datalist id = "dataspet">
+
+                    </datalist>
+                </div>
+            </div>
+            <label for ="Comment">Комментарий</label>
+            <textarea class = "form-control" id = "Comment" style="min-height: 50px; max-height: 100px;" readonly></textarea>
+        </div>
+        <button class = "btn btn-primary" id = "AddConsultation" disabled>Добавить консультации</button>
     </div>
 </div>
 <script src = "scripts/inspect_create.js"></script>
