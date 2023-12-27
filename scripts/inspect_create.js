@@ -110,3 +110,39 @@ document.querySelector("#AddConsultation").addEventListener("click", ()=>{
     document.querySelector("#Consultations").appendChild(clone);
 });
 
+document.querySelector("#Illness").addEventListener("input", (e)=>{
+    console.log(`https://mis-api.kreosoft.space/api/dictionary/icd10?request=${e.target.value}`)
+    document.querySelector("#IllnessList").innerHTML = "";
+    $.ajax({
+        url: `https://mis-api.kreosoft.space/api/dictionary/icd10?request=${e.target.value}`,
+        method: "GET",
+        contentType: "application/json",
+        success: function(data){
+            data.records.forEach(elem =>{
+                document.querySelector("#IllnessList").innerHTML += `
+                <option>${elem.code} - ${elem.name}</option>
+                `;
+                e.target.setAttribute("diagid", elem.id);
+            });
+        }
+    })
+});
+
+document.querySelector("#AddDiagnoses").addEventListener("click", ()=>{
+    let clone = document.querySelector("#DiagnosesDiv").cloneNode(true);
+    clone.id = "";
+    clone.classList.remove("d-none");
+    clone.querySelector(".h3.container").textContent = document.querySelector("#Illness").value;
+    let types = document.querySelector("#Types");
+    let type = "";
+    types.querySelectorAll("input").forEach(radio =>{
+        if(radio.checked){
+            type = types.querySelector(`label[for=${radio.id}]`).textContent;
+        }
+    });
+    clone.querySelector("#type").textContent = `Тип в осмотре: ${type}`;
+    clone.querySelector("#type").id = "";
+    clone.querySelector("#desc").textContent = `Расшифровка: ${document.querySelector("#IllnessDescr").value}`;
+    clone.querySelector("#desc").id = "";
+    document.querySelector("#Diagnoses").appendChild(clone)
+})
