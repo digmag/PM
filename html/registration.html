@@ -1,0 +1,50 @@
+<div class = "container align-items-center juctify-items-center">
+    <form class = "border shadow-sm p-2">
+        <div class = "h1">
+            Регистрация
+        </div>
+        <label for = "Name">Имя</label>
+        <div class = "input-group">
+            <input class = "form-control" id = "Name" placeholder="Иванов Иван Иванович">
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class = "row">
+            <div class = "col">
+                <label for ="Gender">Пол</label>
+                <select class = "form-select" id = "Gender">
+                    <option>Мужской</option>
+                    <option>Женский</option>
+                </select>
+            </div>
+            <div class = "col">
+                <label for="Date">Дата рождения</label>
+                <input class = "form-control" id = "Date" type = "date">
+            </div>
+        </div>
+        <label for = "phoneField">Телефон</label>
+        <div class = "input-group">
+            <input class = "form-control" type="tel" id = "phoneField" placeholder="+7 (999) 999-99-99">
+            <div class="invalid-feedback"></div>
+        </div>
+        <label for="Speciality">Специальность</label>
+        <div class = "input-group">
+            <input class="form-control" id = "Speciality" list = "Specialitys">
+            <datalist id = "Specialitys">
+
+            </datalist>
+            <div class = "invalid-feedback"></div>
+        </div>
+        <label for = "emailField">Email</label>
+        <div class = "input-group">
+            <input class = "form-control" type="email" id = "emailField" placeholder="youremail@gmail.com">
+            <div class="invalid-feedback"></div>
+        </div>
+        <label for ="passwordField" class = "mt-2">Password</label>
+        <div class = "input-group">
+            <input class = "form-control" type="password" id ="passwordField" placeholder="password">
+            <div class="invalid-feedback"></div>
+        </div>
+        <button class = "btn btn-primary w-100 mt-2" id = "regClick" type  ="button">Зарегистрироваться</button>
+    </form>
+</div>
+<script src = "../scripts/registratin.js"></script>
