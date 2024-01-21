@@ -1,6 +1,5 @@
 const email_pattern = RegExp("[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}");
 const password_pattern = RegExp("[a-zA-z0-9]{6,}");
-
 document.querySelector("#authClick").addEventListener("click",()=>{
     document.querySelector("#emailField").classList.remove("is-invalid");
     document.querySelector("#passwordField").classList.remove("is-invalid");
@@ -15,7 +14,8 @@ document.querySelector("#authClick").addEventListener("click",()=>{
                 "password":document.querySelector("#passwordField").value
             }),
             success: function(data){
-                localStorage.setItem("token",data.token)
+                localStorage.setItem("token",data.token);
+                window.location.href = "../patients"
             },
             error: function(error){
                 const errors = error.responseJSON.errors;

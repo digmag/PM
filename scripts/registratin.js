@@ -56,6 +56,7 @@ document.querySelector("#regClick").addEventListener("click",()=>{
             data:JSON.stringify(data),
             success: function(data){
                 localStorage.setItem("token", data.token);
+                window.location.href = "../patients";
             },
             error: function(t){
                 alert(t)

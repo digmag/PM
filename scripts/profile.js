@@ -42,7 +42,6 @@ function putin(data){
     document.querySelector("#Date").value = date_to_normal(data.birthday);
     document.querySelector("#Name").value = data.name;
 }
-
 document.querySelector("#Save").addEventListener("click", ()=>{
     const data = {
         "email": document.querySelector("#emailField").value,
