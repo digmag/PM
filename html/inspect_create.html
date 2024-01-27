@@ -1,0 +1,133 @@
+<div class = "container">
+    <div class = "h1 container">
+        Создание осмотра
+    </div>
+    <div class = "container bg-light p-2">
+        <div class = "row">
+            <div class = "h3 col" id = "Name"></div>
+            <div class = "col text-secondary text-end" id = "BDate"></div>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="NotFirstInspection">
+            <label class="form-check-label" for="NotFirstInspection">Повторный осмотр</label>
+        </div>
+        <select class = "form-select w-50 d-none" id = "OtherInspections"></select>
+        <label for = "Date">Дата осмотра</label>
+        <input class = "form-control w-25" id = "Date" type = "date">
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Жалобы
+        </div>
+        <textarea class = "form-text w-100" style="min-height: 50px; max-height: 100px;" id = "Complaint"></textarea>
+        <button class = "btn btn-primary mt-2" id = "btnStartSpeechComplaint">Запись голоса</button>
+        <button class = "btn btn-primary mt-2 d-none" id = "btnStopSpeechComplaint">Остановить запись</button>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Анамнез заболевания
+        </div>
+        <textarea class = "form-text w-100" style="min-height: 50px; max-height: 100px;" id = "Anamnesis"></textarea>
+        <button class = "btn btn-primary mt-2" id = "btnStartSpeechAnamnesis">Запись голоса</button>
+        <button class = "btn btn-primary mt-2 d-none" id = "btnStopSpeechAnamnesis">Остановить запись</button>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Консультация
+        </div>
+        <div id = "Consultations">
+            <div class = "container d-none" id = "consultationDiv">
+                <div class = "h3 container">Консультация</div>
+                <div class = "container text-secondary" id ="spec">Специальность</div>
+                <div class = "container text-secondary" id="com">Комментарий</div>
+            </div>
+        </div>
+        <div class = "container bg-light p-2">
+            <div class = "row">
+                <div class = "col">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="NeedConsultation">
+                        <label class="form-check-label" for="NeedConsultation">Требуется консультация</label>
+                    </div>
+                </div>
+                <div class = "col">
+                    <input class = "form-control" id = "Spetiality" placeholder = "Специальность консультанта" readonly list = "dataspet">
+                    <datalist id = "dataspet">
+
+                    </datalist>
+                </div>
+            </div>
+            <label for ="Comment">Комментарий</label>
+            <textarea class = "form-control" id = "Comment" style="min-height: 50px; max-height: 100px;" readonly></textarea>
+        </div>
+        <button class = "btn btn-primary" id = "AddConsultation" disabled>Добавить консультации</button>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Диагнозы
+        </div>
+        <div id = "Diagnoses">
+            <div class = "container d-none" id = "DiagnosesDiv">
+                <div class = "h3 container"></div>
+                <div class = "container text-secondary" id ="type"></div>
+                <div class = "container text-secondary text-weap" id="desc"></div>
+            </div>
+        </div>
+        <label class = "text-secondary" for = "DescriptionDiagnoses">Болезни</label>
+        <div id = "DescriptionDiagnoses">
+            <input class = "form-control" id = "Illness" list = "IllnessList">
+            <datalist id = "IllnessList">
+
+            </datalist>
+            <input class = "form-control mt-1" id = "IllnessDescr">
+        </div>
+        <label class = "text-secondary" for = "Types">Тип диагноза: </label>
+        <div id = "Types">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Main" value="option1">
+                <label class="form-check-label" for="Main">Основной</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="NotMain" value="option2">
+                <label class="form-check-label" for="NotMain">Сопутствующий</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="NotMainNotNotMain" value="option2">
+                <label class="form-check-label" for="NotMainNotNotMain">Ослажнение</label>
+            </div>
+        </div>
+        <button class = "btn btn-primary" id = "AddDiagnoses">Добавить диагноз</button>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Рекомендации
+        </div>
+        <textarea class = "w-100 text-secondary" id = "Recomendations" style="min-height: 50px; max-height: 100px;"></textarea>
+        <button class = "btn btn-primary mt-2" id = "btnStartSpeechRecomendations">Запись голоса</button>
+        <button class = "btn btn-primary mt-2 d-none" id = "btnStopSpeechRecomendations">Остановить запись</button>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Заключение
+        </div>
+        <div class = "row mt-1">
+            <div class = "col-6">
+                <label class = "text-secondary" for = "final">Заключение</label>
+                <select class = "form-select" id = "final">
+                    <option>Болезнь</option>
+                    <option>Выздоровел</option>
+                    <option>Смерть</option>
+                </select>
+            </div>
+            <div class = "col-6">
+                <label class = "text-secondary" for = "finaldate">Дата заключения</label>
+                <input class = "form-control" id = "finaldate" type = "date">
+            </div>
+        </div>
+    </div>
+    <div class = "container">
+        <button class = "btn btn-primary" id = "CreateInspection">Создать осмотр</button>
+        <button class = "btn btn-secondary">Отмена</button>
+    </div>
+</div>
+<script src = "scripts/inspect_create.js"></script>
