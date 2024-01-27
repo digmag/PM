@@ -1,22 +1,28 @@
-window.addEventListener("load", ()=>{
-    $.ajax({
-        url: `https://mis-api.kreosoft.space/api/doctor/profile`,
-        method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        contentType: "application/json",
-        success: function(data){
-            putin(data)
-        },
-        error: function(t){
-            if(t.status == 401){
-                alert("Зарегистрируйтесь");
-            }
+$.ajax({
+    url: `https://mis-api.kreosoft.space/api/doctor/profile`,
+    method: "GET",
+    headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    contentType: "application/json",
+    success: function(data){
+        console.log(data)
+        putin(data)
+    },
+    error: function(t){
+        if(t.status == 401){
+            alert("Зарегистрируйтесь");
+            localStorage.removeItem("token");
+            window.location.href = "/login";
         }
-    })
+    }
 });
-
+if(localStorage.getItem("Voice_need")=="true"){
+    document.querySelector("#WeakSeeing").checked = true;
+}
+else{
+    document.querySelector("#WeakSeeing").checked = false;
+}
 function date_to_normal(date){
     return date.split("T")[0];
 }
@@ -43,6 +49,7 @@ function putin(data){
     document.querySelector("#Name").value = data.name;
 }
 document.querySelector("#Save").addEventListener("click", ()=>{
+    localStorage.setItem("Voice_need",document.querySelector("#WeakSeeing").checked);
     const data = {
         "email": document.querySelector("#emailField").value,
         "name": document.querySelector("#Name").value,

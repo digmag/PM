@@ -1,0 +1,49 @@
+<div class = "container">
+    <div class = "container mt-2">
+        <div class = "row">
+            <div class = "col h1">
+                Консультации
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light p-2" id = "filtration">
+        <div class="row align-items-center">
+            <div class ="col-6">
+                <label for = "diognosis">МКБ</label>
+                <input class = "form-control w-100" type="text" id = "diognosis">
+                <div id = "diag"></div>
+            </div>
+            <div class ="col-6 align-items-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="NotMain" value="option2">
+                    <label class="form-check-label" for="Repeat">Сгруппировать по повторным</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="NotMainNotNotMain" value="option2">
+                    <label class="form-check-label" for="All">Показать все</label>
+                </div>
+            </div>
+        </div>
+        <div class = "row align-items-center mt-2">
+            <div class = "col">
+                <label for="CountPatients">Пациентов на странице</label>
+                <input class = "form-input" id = "CountPatients" value="5">
+            </div>
+            <div class = "col text-end">
+                <button class = "btn btn-primary">Применить</button>
+            </div>
+        </div> 
+    </div>
+    <div class = "container mt-2" id = "patients">
+        <div class="card bg-light mb-3 d-none" id="Inspection">
+            <div id="date" class="m-1">Дата осмотра -</div>
+            <div id="conclusion" class="m-1">Заключение: </div>
+            <div id="diog" class="m-1">Основной диагноз: </div>
+            <div id="name" class="m-1 text-secondary">Осмотрел: </div>
+        </div>
+    </div>
+    <ul class="pagination" id = "paginationBar">
+                
+    </ul>
+</div>
+<script src = "../scripts/consultations.js"></script>

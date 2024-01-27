@@ -6,7 +6,7 @@ window.addEventListener("load", ()=>{
     }
     $.ajax({
         method: "GET",
-        url: `https://mis-api.kreosoft.space/api/patient?page=${page}`,
+        url: `https://mis-api.kreosoft.space/api/consultation?page=${page}`,
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
@@ -21,26 +21,33 @@ window.addEventListener("load", ()=>{
 });
 
 function putPatient(data){
-    data.patients.forEach(patient => {
-        const clone = document.querySelector("#patient").cloneNode(true);
+    data.inspections.forEach(inspection => {
+        const clone = document.querySelector("#Inspection").cloneNode(true);
         clone.classList.remove("d-none");
-        clone.id = patient.id;
-        clone.querySelector("#name").textContent = patient.name;
+        clone.id = inspection.id;
+        clone.querySelector("#name").textContent += inspection.doctor;
         clone.querySelector("#name").id = "";
-        if(patient.gender == "Male"){
-            clone.querySelector("#gender").textContent += " Мужской";
+        clone.querySelector("#diog").textContent += `${inspection.diagnosis.name} (${inspection.diagnosis.code})`
+        switch (inspection.conclusion){
+            case "Recovery":
+                clone.querySelector("#conclusion").textContent += "Выздоровел";
+                break;
+            case "Disease":
+                clone.querySelector("#conclusion").textContent += "Болен";
+                break;
+            case "Death":
+                clone.querySelector("#conclusion").textContent += "Мертв";
+                break;
+        }
+        
+        clone.querySelector("#conclusion").id = "";
+        if(inspection.date){
+            clone.querySelector("#date").textContent += " "+ dateconv(inspection.date);
         }
         else{
-            clone.querySelector("#gender").textContent += " Женский";
+            clone.querySelector("#date").textContent += " Не указана";
         }
-        clone.querySelector("#gender").id = "";
-        if(patient.birthday){
-            clone.querySelector("#birthday").textContent += " "+ dateconv(patient.birthday);
-        }
-        else{
-            clone.querySelector("#birthday").textContent += " Не указана";
-        }
-        clone.querySelector("#birthday").id = "";
+        clone.querySelector("#date").id = "";
 
         let text = createtext(clone);
         if(localStorage.getItem("Voice_need")=="true"){
@@ -63,15 +70,15 @@ function putPatient(data){
             })
         }
         clone.addEventListener("click",(e)=>{
-            localStorage.setItem("patientid", e.target.parentElement.id);
-            window.location.href = "/patient"
+            localStorage.setItem("inspectid", e.target.parentElement.id);
+            window.location.href = "/inspection"
         });
         document.querySelector("#patients").appendChild(clone);
     });
     createpagination(data.pagination);
 }
 function createtext(e){
-    let text = "Пациент "
+    let text = ""
     e.querySelectorAll("div").forEach(element => {
         text+= `${element.textContent} `;
     });

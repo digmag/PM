@@ -202,3 +202,75 @@ document.querySelector("#CreateInspection").addEventListener("click", ()=>{
     data.diagnoses = datadiag;
     console.log(data)
 });
+
+document.querySelector("#btnStartSpeechComplaint").addEventListener("click", (e)=>{
+    let recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.addEventListener('result', function(event) {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            interimTranscript += event.results[i][0].transcript;
+          }
+        }
+        document.querySelector("#Complaint").value += interimTranscript;
+    })
+    recognition.start();
+    e.target.classList.add("d-none");
+    document.querySelector("#btnStopSpeechComplaint").classList.remove("d-none");
+    document.querySelector("#btnStopSpeechComplaint").addEventListener("click", (e)=>{
+        if(recognition){
+            recognition.stop();
+            e.target.classList.add("d-none");
+        }
+    });
+});
+
+document.querySelector("#btnStartSpeechAnamnesis").addEventListener("click", (e)=>{
+    let recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.addEventListener('result', function(event) {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            interimTranscript += event.results[i][0].transcript;
+          }
+        }
+        document.querySelector("#Anamnesis").value += interimTranscript;
+    })
+    recognition.start();
+    e.target.classList.add("d-none");
+    document.querySelector("#btnStopSpeechAnamnesis").classList.remove("d-none");
+    document.querySelector("#btnStopSpeechAnamnesis").addEventListener("click", (e)=>{
+        if(recognition){
+            recognition.stop();
+            e.target.classList.add("d-none");
+        }
+    });
+});
+
+document.querySelector("#btnStartSpeechRecomendations").addEventListener("click", (e)=>{
+    let recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.addEventListener('result', function(event) {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            interimTranscript += event.results[i][0].transcript;
+          }
+        }
+        document.querySelector("#Recomendations").value += interimTranscript;
+    })
+    recognition.start();
+    e.target.classList.add("d-none");
+    document.querySelector("#btnStopSpeechRecomendations").classList.remove("d-none");
+    document.querySelector("#btnStopSpeechRecomendations").addEventListener("click", (e)=>{
+        if(recognition){
+            recognition.stop();
+            e.target.classList.add("d-none");
+        }
+    });
+});

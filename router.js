@@ -1,15 +1,7 @@
-document.querySelector("head").innerHTML = `<meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>`;
+document.querySelector("head").innerHTML = `<meta charset="UTF-8">`
 
-let route = window.location.pathname;
-let newroute ="";
-let parceroute = route.split("/");
-if(parceroute[1] == "patient" || parceroute[1] == "inspection"){
-    for(let i =0; i<parceroute.length-1;i++){
-        newroute+=`/${parceroute[i]}`;
-    }
-    route = newroute;
-}
+let route = "/"+window.location.pathname.split("/")[1];
+
 console.log(route);
 switch (route) {
     case "/login":
@@ -36,7 +28,57 @@ switch (route) {
             `;
         })
         break;
+    case "/profile":
+        $.get("html/profile.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML+=`
+                <title>profile</title>
+                `;
+        })
+        break;
+    case `/patient`:
+        $.get("html/patient.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML+=`
+                <title>patient</title>
+                `;
+        })
+        break;
+    case "/inspection":
+        $.get("html/inspection.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML+=`
+                <title>inspection</title>
+                `;
+        })
+        break;
+    case "/consultations":
+        $.get("html/consultations.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML+=`
+                <title>consultations</title>
+                `;
+        })
+        break;
+    case "/calendar":
+        $.get("html/consultation_calendar.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML += `<title>Calendar</title>`;
+        });
+        break;
+    case "/inspectioncreate":
+        $.get("html/inspect_create.html", (data)=>{
+            updatepage(data);
+            document.querySelector("head").innerHTML += `<title>Inspection Create</title>`;
+        });
+        break;
     default:
+        if(localStorage.token){
+            window.location.href = "/patients";
+        }
+        else{
+            window.location.href = "/login";
+        }
         break;
 }
 
