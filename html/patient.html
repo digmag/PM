@@ -1,0 +1,43 @@
+<div class = "container">
+    <div class = "container mt-2">
+        <div class = "row">
+            <div class = "col h1">
+                Медицинская карта пациента
+            </div>
+            <div class = "col text-end">
+                <a class = " btn btn-primary" href = "/inspectioncreate">Добавить осмотр</a>
+            </div>
+        </div>
+    </div>
+    <div class = "container mt-2">
+        <div class = "row">
+            <div class = "col h2 " id="name">Имя</div>
+            <div class = "col text-end text-secondary" id="date">Дата рождения</div>
+        </div>
+    </div>
+    <div class="container bg-light p-2" id = "filtration">
+        <div class="row align-items-center">
+            <div class ="col-4">
+                <input class = "form-control w-100" type="text" id = "diognosis">
+                <div id = "diag"></div>
+            </div>
+            <div class = "col-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Group">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Сгруппировать по повторным
+                    </label>
+                </div>
+            </div>
+            <div class = "col-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="All">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Показать все
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src = "../scripts/patient.js"></script>

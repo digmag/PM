@@ -1,0 +1,67 @@
+<div class = "container">
+    <div class = "h1 container">
+        Осмотр
+    </div>
+    <div class = "container bg-light p-2">
+        <div class = "row">
+            <div class = "h3 col" id = "Name"></div>
+            <div class = "col text-secondary text-end" id = "BDate"></div>
+        </div>
+        <label for = "Date">Дата осмотра</label>
+        <div id = "Date"></div>
+        <div class = "text-secondary" id="Doctor">Осмотрел: </div>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Жалобы
+        </div>
+        <div class = "w-100" id = "Complaint"></div>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Анамнез заболевания
+        </div>
+        <div class = "w-100"id = "Anamnesis"></div>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Консультация
+        </div>
+        <div id = "Consultations">
+        </div>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Диагнозы
+        </div>
+        <div id = "Diagnoses">
+            <div class = "container d-none" id = "DiagnosesDiv">
+                <div class = "h3 container"></div>
+                <div class = "container text-secondary" id ="type"></div>
+                <div class = "container text-secondary text-weap" id="desc"></div>
+            </div>
+        </div>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Рекомендации
+        </div>
+        <div class = "w-100" id = "Recomendations"></div>
+    </div>
+    <div class = "container bg-light p-2 mt-2">
+        <div class = "h3 text-primary">
+            Заключение
+        </div>
+        <div class = "row mt-1">
+            <div class = "col-6">
+                <label class = "text-secondary" for = "final">Заключение</label>
+                <div id = "final"></div>
+            </div>
+            <div class = "col-6">
+                <label class = "text-secondary" for = "finaldate">Дата следующего осмотра</label>
+                <div id = "finaldate">Даты следующего осмотра - нет</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src = "../scripts/inspection.js"></script>

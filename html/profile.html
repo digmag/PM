@@ -1,0 +1,39 @@
+<div class = "container border shadow-lg p-2 bg-light rounded-3">
+    <div class = "h1">
+        Профиль
+    </div>
+    <label for = "Name">Имя</label>
+    <div class = "input-group">
+        <input class = "form-control" id = "Name" placeholder="Иванов Иван Иванович">
+        <div class="invalid-feedback"></div>
+    </div>
+    <div class = "row">
+        <div class = "col">
+            <label for ="Gender">Пол</label>
+            <select class = "form-select" id = "Gender">
+                <option>Мужской</option>
+                <option>Женский</option>
+            </select>
+        </div>
+        <div class = "col">
+            <label for="Date">Дата рождения</label>
+            <input class = "form-control" id = "Date" type = "date">
+        </div>
+    </div>
+    <label for = "phoneField">Телефон</label>
+    <div class = "input-group">
+        <input class = "form-control" type="tel" id = "phoneField" placeholder="+7 (999) 999-99-99">
+        <div class="invalid-feedback"></div>
+    </div>
+    <label for = "emailField">Email</label>
+    <div class = "input-group">
+        <input class = "form-control" type="email" id = "emailField" placeholder="youremail@gmail.com">
+        <div class="invalid-feedback"></div>
+    </div>
+    <div class="form-check form-switch mt-2 container align-items-center">
+        <label class="form-check-label h1" for="WeakSeeing">Слабовидящий</label>
+        <input class="form-check-input" type="checkbox" role="switch" id="WeakSeeing">
+    </div>
+    <button class = "btn btn-primary mt-2" id = "Save">Сохранить</button>
+</div>
+<script src = "../scripts/profile.js"></script>
